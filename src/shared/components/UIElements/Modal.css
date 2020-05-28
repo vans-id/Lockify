@@ -4,7 +4,7 @@
   top: 12vh;
   left: 10%;
   width: 80%;
-  background-color: #e6f0f9;
+  background-color: #f4f2f1;
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
     -9px -9px 16px rgba(255, 255, 255, 0.5);
   border-radius: 11px;
@@ -14,7 +14,7 @@
   width: 80%;
   border-radius: 11px;
   padding: 16px;
-  background-color: #e6f0f9;
+  background-color: #f4f2f1;
   color: #001f3f;
 }
 

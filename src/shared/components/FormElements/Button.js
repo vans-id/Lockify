@@ -24,7 +24,9 @@ const Button = (props) => {
         exact={props.exact}
         className={`button button--${
           props.size || 'default'
-        } ${props.danger && 'button--danger'}`}
+        } ${props.danger && 'button--danger'} ${
+          props.inverse && 'button--inverse'
+        }`}
       >
         {props.children}
       </Link>
@@ -35,7 +37,9 @@ const Button = (props) => {
     <button
       className={`button button--${
         props.size || 'default'
-      } ${props.danger && 'button--danger'}`}
+      } ${props.danger && 'button--danger'} ${
+        props.inverse && 'button--inverse'
+      }`}
       type={props.type}
       onClick={props.onClick}
       disabled={props.disabled}

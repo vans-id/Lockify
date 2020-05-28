@@ -6,33 +6,47 @@
   align-items: center;
   border: none;
   color: #6b7992;
-  background: #e6f0f9;
-  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
-    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  background: #f4f2f1;
+  box-shadow: 20px 20px 60px #cfcecd,
+    -20px -20px 60px #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
 
 .button:hover,
 .button:active {
-  color: #ff375f;
+  color: #9f34ff;
   box-shadow: inset 9px 9px 16px
       rgb(163, 177, 198, 0.6),
     inset -9px -9px 16px rgba(255, 255, 255, 0.5);
 }
 
 .button--danger {
-  color: #e6f0f9;
+  color: #f4f2f1;
   background-color: #cc0001;
-  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
-    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  box-shadow: 20px 20px 60px #cfcecd,
+    -20px -20px 60px #ffffff;
 }
 
 .button--danger:hover,
 .button--danger:active {
-  color: #e6f0f9;
+  color: #f4f2f1;
   box-shadow: inset 9px 9px 16px #ad0001,
     inset -9px -9px 16px #eb0001;
+}
+
+.button--inverse {
+  color: #f4f2f1;
+  background-color: #9f34ff;
+  box-shadow: 20px 20px 60px #cfcecd,
+    -20px -20px 60px #ffffff;
+}
+
+.button--inverse:hover,
+.button--inverse:active {
+  color: #f4f2f1;
+  box-shadow: inset 20px 20px 60px #872cd9,
+    inset -20px -20px 60px #b73cff;
 }
 
 .button--default {

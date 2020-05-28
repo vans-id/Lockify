@@ -1,8 +1,11 @@
 primary : #001f3f
 secondary : #6b7992
 accent: #ff375f
+danger: #cc0001
 
 border-radius: 15px;
   background: #e6f0f9;
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
     -9px -9px 16px rgba(255, 255, 255, 0.5);
+
+pk.eyJ1IjoiZGpldmFubiIsImEiOiJja2FxNXA0N3IwZGdzMnFvM21xcDI2MXd5In0.kt3x5njVTrlxvKe5ggWhEA

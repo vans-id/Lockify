@@ -3,16 +3,15 @@
   height: 64px;
   display: flex;
   align-items: center;
-  position: fixed;
   top: 0;
   left: 0;
   padding-left: 16px;
   z-index: 5;
 }
 
-main {
+/* main {
   margin-top: 80px;
-}
+} */
 
 @media (min-width: 768px) {
   .main-header {

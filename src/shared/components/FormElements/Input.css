@@ -1,0 +1,41 @@
+.form-control {
+  margin: 16px 0;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+}
+
+.form-control label {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.form-control input,
+.form-control textarea {
+  border: none;
+  outline: none;
+  color: #001f3f;
+  width: 90%;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background-color: #e6f0f9;
+  box-shadow: inset 2px 2px 8px rgb(163, 177, 198, 0.6),
+    inset -2px -2px 8px rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-control--invalid label,
+.form-control--invalid p {
+  color: #cc0001;
+}
+
+.form-control--invalid input,
+.form-control--invalid textarea {
+  color: #cc0001;
+  border: 1px solid #cc0001;
+}

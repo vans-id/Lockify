@@ -1,0 +1,54 @@
+.button {
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: #6b7992;
+  background: #e6f0f9;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  color: #ff375f;
+  box-shadow: inset 9px 9px 16px
+      rgb(163, 177, 198, 0.6),
+    inset -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.button--danger {
+  color: #e6f0f9;
+  background-color: #cc0001;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.button--danger:hover,
+.button--danger:active {
+  color: #e6f0f9;
+  box-shadow: inset 9px 9px 16px #ad0001,
+    inset -9px -9px 16px #eb0001;
+}
+
+.button--default {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.button--large {
+  color: #001f3f;
+  padding: 12px 36px;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .button--large {
+    width: 100%;
+  }
+}

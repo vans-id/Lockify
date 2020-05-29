@@ -9,6 +9,7 @@
 }
 
 .form-control label {
+  color: #6b7992;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -17,10 +18,10 @@
 .form-control textarea {
   border: none;
   outline: none;
-  color: #001f3f;
+  color: #6b7992;
   width: 90%;
   padding: 8px 16px;
-  border-radius: 50px;
+  border-radius: 11px;
   background-color: #f4f2f1;
   box-shadow: inset 2px 2px 8px rgb(163, 177, 198, 0.6),
     inset -2px -2px 8px rgba(255, 255, 255, 0.5);

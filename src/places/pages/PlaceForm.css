@@ -5,8 +5,8 @@
   padding: 16px;
   width: 90%;
   max-width: 640px;
-  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
-    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
   border-radius: 11px;
   background-color: #f4f2f1;
 }

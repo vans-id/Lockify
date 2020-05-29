@@ -4,10 +4,12 @@ accent: #9F34FF
 danger: #cc0001
 
 border-radius: 15px;
-  background: #F4F2F1; #F4F2F1
+  background: #F4F2F1
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
     -9px -9px 16px rgba(255, 255, 255, 0.5);
 box-shadow:  20px 20px 60px #cfcecd, 
              -20px -20px 60px #ffffff;
+box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
 
 pk.eyJ1IjoiZGpldmFubiIsImEiOiJja2FxNXA0N3IwZGdzMnFvM21xcDI2MXd5In0.kt3x5njVTrlxvKe5ggWhEA

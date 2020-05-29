@@ -1,36 +1,43 @@
 .button {
+  margin-top: 32px;
   font-weight: 700;
   font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
+  outline: none;
   color: #6b7992;
-  background: #f4f2f1;
-  box-shadow: 20px 20px 60px #cfcecd,
-    -20px -20px 60px #ffffff;
+  background-color: #f4f2f1;
+  box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.button:hover,
+.button:hover {
+  box-shadow: 9px 9px 16px #cfcecd,
+    -9px -9px 16px #ffffff;
+}
 .button:active {
-  color: #9f34ff;
-  box-shadow: inset 9px 9px 16px
-      rgb(163, 177, 198, 0.6),
-    inset -9px -9px 16px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 9px 9px 16px #cfcecd,
+    inset -9px -9px 16px #ffffff;
 }
 
 .button--danger {
   color: #f4f2f1;
   background-color: #cc0001;
-  box-shadow: 20px 20px 60px #cfcecd,
-    -20px -20px 60px #ffffff;
+  box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
 }
 
-.button--danger:hover,
-.button--danger:active {
+.button--danger:hover {
   color: #f4f2f1;
+  box-shadow: 9px 9px 16px #cfcecd,
+    -9px -9px 16px #ffffff;
+}
+
+.button--danger:active {
   box-shadow: inset 9px 9px 16px #ad0001,
     inset -9px -9px 16px #eb0001;
 }
@@ -38,15 +45,18 @@
 .button--inverse {
   color: #f4f2f1;
   background-color: #9f34ff;
-  box-shadow: 20px 20px 60px #cfcecd,
-    -20px -20px 60px #ffffff;
+  box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
 }
 
-.button--inverse:hover,
+.button--inverse:hover {
+  box-shadow: 9px 9px 16px #cfcecd,
+    -9px -9px 16px #ffffff;
+}
+
 .button--inverse:active {
-  color: #f4f2f1;
-  box-shadow: inset 20px 20px 60px #872cd9,
-    inset -20px -20px 60px #b73cff;
+  box-shadow: inset 9px 9px 16px #872cd9,
+    inset -9px -9px 16px #b73cff;
 }
 
 .button--default {
@@ -56,9 +66,22 @@
 }
 
 .button--large {
-  color: #001f3f;
   padding: 12px 36px;
   border-radius: 50px;
+}
+
+.button--disabled {
+  background: #f4f2f1;
+  color: #6b7992;
+  box-shadow: inset 4px 4px 8px #cfcecd,
+    inset -4px -4px 8px #ffffff;
+  cursor: not-allowed;
+}
+
+.button--disabled:hover {
+  color: #6b7992;
+  box-shadow: inset 4px 4px 8px #cfcecd,
+    inset -4px -4px 8px #ffffff;
 }
 
 @media (max-width: 768px) {

@@ -16,5 +16,12 @@
 @media (min-width: 768px) {
   .main-header {
     justify-content: space-between;
+    width: 90%;
+  }
+  .header-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

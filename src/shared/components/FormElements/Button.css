@@ -1,5 +1,5 @@
 .button {
-  margin-top: 32px;
+  margin: 8px;
   font-weight: 700;
   font-size: 16px;
   display: flex;
@@ -71,21 +71,21 @@
 }
 
 .button--disabled {
-  background: #f4f2f1;
-  color: #6b7992;
-  box-shadow: inset 4px 4px 8px #cfcecd,
-    inset -4px -4px 8px #ffffff;
+  background-color: #e5e5f0;
+  color: #7a7aac;
+  box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
   cursor: not-allowed;
 }
 
 .button--disabled:hover {
-  color: #6b7992;
-  box-shadow: inset 4px 4px 8px #cfcecd,
-    inset -4px -4px 8px #ffffff;
+  color: #7a7aac;
+  box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .button--large {
-    width: 100%;
+    display: inline-block;
   }
 }

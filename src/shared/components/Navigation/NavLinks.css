@@ -12,6 +12,9 @@
 
 .nav-links li {
   margin: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-links a {
@@ -27,7 +30,7 @@
   font-weight: 700;
 }
 
-.nav-links button {
+/* .nav-links button {
   border: 1px solid #fff;
   color: #fff;
   background: transparent;
@@ -37,7 +40,9 @@
 .nav-links button:active {
   background-color: #9f34ff;
   color: #001f3f;
-}
+  box-shadow: 4px 4px 8px #cfcecd,
+    -4px -4px 8px #ffffff;
+} */
 
 @media (min-width: 768px) {
   .nav-links {

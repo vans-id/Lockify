@@ -4,9 +4,11 @@ import './MainHeader.css';
 
 const MainHeader = (props) => {
   return (
-    <header className='main-header'>
-      {props.children}
-    </header>
+    <div className='header-container'>
+      <header className='main-header'>
+        {props.children}
+      </header>
+    </div>
   );
 };
 

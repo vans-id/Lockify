@@ -19,7 +19,8 @@
   border: none;
   outline: none;
   color: #6b7992;
-  width: 90%;
+  width: 100%;
+  box-sizing: border-box;
   padding: 8px 16px;
   border-radius: 11px;
   background-color: #f4f2f1;

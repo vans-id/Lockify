@@ -2,6 +2,8 @@
   list-style: none;
   margin: 16px auto;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   padding: 16px;
   width: 90%;
   max-width: 640px;
@@ -9,4 +11,10 @@
     -4px -4px 8px #ffffff;
   border-radius: 11px;
   background-color: #f4f2f1;
+}
+
+@media (min-width: 768px) {
+  .place-form {
+    display: block;
+  }
 }

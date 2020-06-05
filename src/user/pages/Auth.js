@@ -65,7 +65,7 @@ const Auth = () => {
 
     if (isLogin) {
       try {
-        await sendRequest(
+        const data = await sendRequest(
           'http://localhost:5000/api/users/login',
           'POST',
           JSON.stringify({
@@ -77,11 +77,11 @@ const Auth = () => {
           }
         );
 
-        login();
+        login(data.user.id);
       } catch (err) {}
     } else {
       try {
-        await sendRequest(
+        const data = await sendRequest(
           'http://localhost:5000/api/users/signup',
           'POST',
           JSON.stringify({
@@ -94,7 +94,7 @@ const Auth = () => {
           }
         );
 
-        login();
+        login(data.user.id);
       } catch (err) {}
     }
   };

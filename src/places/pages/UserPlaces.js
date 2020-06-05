@@ -1,39 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import PlaceList from '../components/PlaceList';
+import { useHttpClient } from '../../shared/hooks/http-hook';
 
-const PLACES = [
-  {
-    id: 'p1',
-    title: 'Vatikan Hill',
-    description: 'Awesome city awesome hill',
-    imageUrl:
-      'https://i.pinimg.com/originals/4c/4b/4b/4c4b4b13cd27bfeeb3d25b491f3d464b.jpg',
-    address:
-      'Colle Vaticano 00120 Vatican City Vatikan',
-    location: [12.4492954, 41.9023751],
-    creator: 'u1',
-  },
-  {
-    id: 'p2',
-    title: 'Aachen Cathedral',
-    description: 'Awesome city awesome hill',
-    imageUrl:
-      'https://www.timetravelturtle.com/wp-content/uploads/2015/04/German_Heritage-2014-2436_feat.jpg',
-    address: 'Domhof 1, 52062 Aachen, German',
-    location: [6.0838523, 50.774699],
-    creator: 'u2',
-  },
-];
+import PlaceList from '../components/PlaceList';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 const UserPlaces = () => {
   const userId = useParams().userId;
-  const loadedPlaces = PLACES.filter(
-    (place) => place.creator === userId
-  );
+  const [places, setPlaces] = useState();
+  const {
+    error,
+    isLoading,
+    clearError,
+    sendRequest,
+  } = useHttpClient();
 
-  return <PlaceList items={loadedPlaces} />;
+  useEffect(() => {
+    const fetchUserPlaces = async () => {
+      try {
+        const data = await sendRequest(
+          `http://localhost:5000/api/places/user/${userId}`
+        );
+        setPlaces(data.places);
+      } catch (err) {}
+    };
+
+    fetchUserPlaces();
+  }, [sendRequest, userId]);
+
+  return (
+    <>
+      <ErrorModal error={error} onClear={clearError} />
+      {isLoading && (
+        <div className='center'>
+          <LoadingSpinner />
+        </div>
+      )}
+      {!isLoading && places && (
+        <PlaceList items={places} />
+      )}
+    </>
+  );
 };
 
 export default UserPlaces;

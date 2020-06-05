@@ -7,7 +7,7 @@ const ErrorModal = (props) => {
   return (
     <Modal
       onCancel={props.onClear}
-      headerProperty='Request Failed'
+      headerProperty='Error Message'
       show={!!props.error}
       footer={
         <Button onClick={props.onClear} size='large'>

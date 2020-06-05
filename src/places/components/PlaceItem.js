@@ -1,26 +1,48 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { AuthContext } from '../../shared/context/auth-context';
+import { useHttpClient } from '../../shared/hooks/http-hook';
 
 import './PlaceItem.css';
 import Card from '../../shared/components/UIElements/Card';
 import Button from '../../shared/components/FormElements/Button';
 import Modal from '../../shared/components/UIElements/Modal';
 import Map from '../../shared/components/UIElements/Map';
-import { AuthContext } from '../../shared/context/auth-context';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 const PlaceItem = (props) => {
   const [showMap, setShowMap] = useState(false);
   const [showConfirm, setShowConfirm] = useState(
     false
   );
-  const { isLoggedIn } = useContext(AuthContext);
+  const {
+    error,
+    isLoading,
+    clearError,
+    sendRequest,
+  } = useHttpClient();
+  const { isLoggedIn, userId } = useContext(
+    AuthContext
+  );
+  const history = useHistory();
 
-  const deleteHandler = () => {
+  const deleteHandler = async () => {
     setShowConfirm(false);
-    console.log('Deleting...');
+    try {
+      await sendRequest(
+        `http://localhost:5000/api/places/${props.id}`,
+        'DELETE'
+      );
+    } catch (err) {}
+    history.push(`/${userId}/places`);
   };
 
   return (
     <>
+      {isLoading && <LoadingSpinner asOverlay />}
+      <ErrorModal error={error} onClear={clearError} />
       <Modal
         show={showMap}
         onCancel={() => setShowMap(false)}

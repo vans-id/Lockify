@@ -13,6 +13,7 @@ import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 
 const Auth = () => {
   const [state, inputHandler, setFormData] = useForm(
@@ -42,6 +43,7 @@ const Auth = () => {
         {
           ...state.inputs,
           name: undefined,
+          image: undefined,
         },
         emailValid && passwordValid
       );
@@ -53,6 +55,10 @@ const Auth = () => {
             value: '',
             isValid: false,
           },
+          image: {
+            value: null,
+            isValid: false,
+          },
         },
         false
       );
@@ -62,6 +68,8 @@ const Auth = () => {
 
   const authHandler = async (e) => {
     e.preventDefault();
+
+    console.log(state.inputs);
 
     if (isLogin) {
       try {
@@ -108,15 +116,23 @@ const Auth = () => {
         className='place-form'
       >
         {!isLogin && (
-          <Input
-            id='name'
-            element='input'
-            label='Username'
-            placeholder='Enter username'
-            validators={[VALIDATOR_REQUIRE()]}
-            errorText='Please enter a valid Username'
-            onInput={inputHandler}
-          />
+          <>
+            <Input
+              id='name'
+              element='input'
+              label='Username'
+              placeholder='Enter username'
+              validators={[VALIDATOR_REQUIRE()]}
+              errorText='Please enter a valid Username'
+              onInput={inputHandler}
+            />
+            <ImageUpload
+              id='image'
+              center
+              isRounded
+              onInput={inputHandler}
+            />
+          </>
         )}
         <Input
           id='email'

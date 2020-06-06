@@ -8,7 +8,7 @@
   background: #f4f2f1;
   box-shadow: 4px 4px 8px #cfcecd,
     -4px -4px 8px #ffffff;
-  margin-right: 16px;
+  margin: 0 16px;
   cursor: pointer;
 }
 
@@ -21,6 +21,10 @@
   justify-content: space-around;
   outline: none;
   cursor: pointer;
+}
+
+.fa-chevron-left {
+  color: #6b7992;
 }
 
 .main-navigation__menu-btn span {

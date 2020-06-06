@@ -34,7 +34,7 @@ p {
 }
 
 .slide-in-left-enter {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 
 .slide-in-left-enter-active {
@@ -49,7 +49,7 @@ p {
 }
 
 .slide-in-left-exit-active {
-  transform: translateX(-100%);
+  transform: translateX(100%);
   opacity: 0;
   transition: all 0.4s;
 }

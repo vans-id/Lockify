@@ -3,15 +3,19 @@
   height: 64px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  background: #f4f2f1;
   top: 0;
-  left: 0;
-  padding-left: 16px;
   z-index: 5;
 }
 
-/* main {
+main {
   margin-top: 80px;
-} */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (min-width: 768px) {
   .main-header {

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { AuthContext } from '../../shared/context/auth-context';
 import { useHttpClient } from '../../shared/hooks/http-hook';
@@ -23,10 +22,7 @@ const PlaceItem = (props) => {
     clearError,
     sendRequest,
   } = useHttpClient();
-  const { isLoggedIn, userId } = useContext(
-    AuthContext
-  );
-  const history = useHistory();
+  const { userId } = useContext(AuthContext);
 
   const deleteHandler = async () => {
     setShowConfirm(false);
@@ -35,13 +31,12 @@ const PlaceItem = (props) => {
         `http://localhost:5000/api/places/${props.id}`,
         'DELETE'
       );
+      props.onDelete(props.id);
     } catch (err) {}
-    history.push(`/${userId}/places`);
   };
 
   return (
     <>
-      {isLoading && <LoadingSpinner asOverlay />}
       <ErrorModal error={error} onClear={clearError} />
       <Modal
         show={showMap}
@@ -84,6 +79,8 @@ const PlaceItem = (props) => {
         </p>
       </Modal>
 
+      {isLoading && <LoadingSpinner asOverlay />}
+
       <li className='place-item'>
         <Card className='place-item__content'>
           <div className='place-item__image'>
@@ -98,7 +95,7 @@ const PlaceItem = (props) => {
             <Button onClick={() => setShowMap(true)}>
               <i className='fas fa-map-marked-alt'></i>
             </Button>
-            {isLoggedIn && (
+            {userId === props.creatorId && (
               <>
                 <Button to={`/places/${props.id}`}>
                   <i className='fas fa-user-edit'></i>

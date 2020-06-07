@@ -80,6 +80,7 @@ const NewPlace = () => {
           id='image'
           center
           onInput={inputHandler}
+          errorText='Please provide an image'
         />
         <Input
           id='title'

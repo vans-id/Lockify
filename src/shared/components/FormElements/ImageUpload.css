@@ -23,11 +23,11 @@
 .image-upload__preview img {
   width: 100%;
   height: auto;
-  min-height: 200px;
 }
 
 .rounded {
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
+  min-height: 8rem;
 }

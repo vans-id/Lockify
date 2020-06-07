@@ -86,7 +86,11 @@ const Auth = () => {
           }
         );
 
-        login(data.user.id);
+        login(
+          data.user.id,
+          data.user.name,
+          data.user.image
+        );
       } catch (err) {}
     } else {
       try {
@@ -114,7 +118,11 @@ const Auth = () => {
           formData
         );
 
-        login(data.user.id);
+        login(
+          data.user.id,
+          data.user.name,
+          data.user.image
+        );
       } catch (err) {}
     }
   };
@@ -134,6 +142,7 @@ const Auth = () => {
               center
               isRounded
               onInput={inputHandler}
+              errorText='Please provide an avatar image'
             />
             <Input
               id='name'

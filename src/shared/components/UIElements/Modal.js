@@ -14,7 +14,7 @@ const ModalOverlay = (props) => {
       <header
         className={`modal__header ${props.headerClass}`}
       >
-        <h3>{props.headerProperty}</h3>
+        <h4>{props.headerProperty}</h4>
       </header>
       <form
         onSubmit={

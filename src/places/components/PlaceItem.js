@@ -36,6 +36,10 @@ const PlaceItem = (props) => {
     } catch (err) {}
   };
 
+  let addressUrl = props.address;
+  if (addressUrl.length > 50)
+    addressUrl = addressUrl.substring(0, 50) + '...';
+
   return (
     <>
       <ErrorModal error={error} onClear={clearError} />
@@ -95,7 +99,7 @@ const PlaceItem = (props) => {
             <div className='title-content'>
               <h4>{props.title}</h4>
               <p className='text-small'>
-                {props.address}
+                {addressUrl}
               </p>
             </div>
           </div>

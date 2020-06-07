@@ -18,7 +18,10 @@ import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 const Auth = () => {
   const [state, inputHandler, setFormData] = useForm(
     {
-      email: { value: '', isValid: false },
+      email: {
+        value: '',
+        isValid: false,
+      },
       password: { value: '', isValid: false },
     },
     false
@@ -69,8 +72,6 @@ const Auth = () => {
   const authHandler = async (e) => {
     e.preventDefault();
 
-    console.log(state.inputs);
-
     if (isLogin) {
       try {
         const data = await sendRequest(
@@ -89,17 +90,28 @@ const Auth = () => {
       } catch (err) {}
     } else {
       try {
+        const formData = new FormData();
+        formData.append(
+          'name',
+          state.inputs.name.value
+        );
+        formData.append(
+          'email',
+          state.inputs.email.value
+        );
+        formData.append(
+          'password',
+          state.inputs.password.value
+        );
+        formData.append(
+          'image',
+          state.inputs.image.value
+        );
+
         const data = await sendRequest(
           'http://localhost:5000/api/users/signup',
           'POST',
-          JSON.stringify({
-            name: state.inputs.name.value,
-            email: state.inputs.email.value,
-            password: state.inputs.password.value,
-          }),
-          {
-            'Content-Type': 'application/json',
-          }
+          formData
         );
 
         login(data.user.id);
@@ -117,6 +129,12 @@ const Auth = () => {
       >
         {!isLogin && (
           <>
+            <ImageUpload
+              id='image'
+              center
+              isRounded
+              onInput={inputHandler}
+            />
             <Input
               id='name'
               element='input'
@@ -124,12 +142,6 @@ const Auth = () => {
               placeholder='Enter username'
               validators={[VALIDATOR_REQUIRE()]}
               errorText='Please enter a valid Username'
-              onInput={inputHandler}
-            />
-            <ImageUpload
-              id='image'
-              center
-              isRounded
               onInput={inputHandler}
             />
           </>

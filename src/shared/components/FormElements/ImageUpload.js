@@ -75,7 +75,7 @@ const ImageUpload = (props) => {
             <img src={previewUrl} alt={'preview'} />
           </div>
         ) : (
-          <p>Please pick your avatar image</p>
+          <p>Please pick your image</p>
         )}
 
         <Button

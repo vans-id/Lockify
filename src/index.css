@@ -26,6 +26,10 @@ p {
   color: #69696d;
 }
 
+.text-small {
+  font-size: 14px;
+}
+
 .center {
   text-align: center;
   display: flex;
@@ -33,22 +37,22 @@ p {
   justify-content: center;
 }
 
-.slide-in-left-enter {
+.slide-in-right-enter {
   transform: translateX(100%);
 }
 
-.slide-in-left-enter-active {
+.slide-in-right-enter-active {
   transform: translateX(0);
   opacity: 1;
   transition: all 0.4s;
 }
 
-.slide-in-left-exit {
+.slide-in-right-exit {
   transform: translateX(0);
   opacity: 1;
 }
 
-.slide-in-left-exit-active {
+.slide-in-right-exit-active {
   transform: translateX(100%);
   opacity: 0;
   transition: all 0.4s;

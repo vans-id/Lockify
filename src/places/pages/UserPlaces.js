@@ -8,8 +8,9 @@ import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 const UserPlaces = () => {
-  const userId = useParams().userId;
+  const [avatarUrl, setAvatarUrl] = useState('');
   const [places, setPlaces] = useState();
+  const userId = useParams().userId;
   const {
     error,
     isLoading,
@@ -24,9 +25,9 @@ const UserPlaces = () => {
           `http://localhost:5000/api/places/user/${userId}`
         );
         setPlaces(data.places);
+        setAvatarUrl(data.avatarUrl);
       } catch (err) {}
     };
-
     fetchUserPlaces();
   }, [sendRequest, userId]);
 
@@ -50,6 +51,7 @@ const UserPlaces = () => {
         <PlaceList
           items={places}
           onDeletePlace={placeDeletedHandler}
+          avatar={avatarUrl}
         />
       )}
     </>

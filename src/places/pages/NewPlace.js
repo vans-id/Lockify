@@ -14,6 +14,7 @@ import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 
 const NewPlace = () => {
   const [state, inputHandler] = useForm(
@@ -21,6 +22,7 @@ const NewPlace = () => {
       title: { value: '', isValid: false },
       description: { value: '', isValid: false },
       address: { value: '', isValid: false },
+      image: { value: undefined, isValid: false },
     },
     false
   );
@@ -37,16 +39,29 @@ const NewPlace = () => {
     e.preventDefault();
 
     try {
+      const formData = new FormData();
+      formData.append(
+        'title',
+        state.inputs.title.value
+      );
+      formData.append(
+        'description',
+        state.inputs.description.value
+      );
+      formData.append(
+        'address',
+        state.inputs.address.value
+      );
+      formData.append('creator', userId);
+      formData.append(
+        'image',
+        state.inputs.image.value
+      );
+
       await sendRequest(
         'http://localhost:5000/api/places',
         'POST',
-        JSON.stringify({
-          title: state.inputs.title.value,
-          description: state.inputs.description.value,
-          address: state.inputs.address.value,
-          creator: userId,
-        }),
-        { 'Content-Type': 'application/json' }
+        formData
       );
       // Redirect user to diffrent page
       history.push('/');
@@ -61,6 +76,11 @@ const NewPlace = () => {
         className='place-form'
         onSubmit={placeSubmitHandler}
       >
+        <ImageUpload
+          id='image'
+          center
+          onInput={inputHandler}
+        />
         <Input
           id='title'
           element='input'

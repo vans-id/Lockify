@@ -10,6 +10,7 @@ import Modal from '../../shared/components/UIElements/Modal';
 import Map from '../../shared/components/UIElements/Map';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import Avatar from '../../shared/components/UIElements/Avatar';
 
 const PlaceItem = (props) => {
   const [showMap, setShowMap] = useState(false);
@@ -83,12 +84,28 @@ const PlaceItem = (props) => {
 
       <li className='place-item'>
         <Card className='place-item__content'>
+          <div className='place-item__title'>
+            <div>
+              <Avatar
+                image={`http://localhost:5000/${props.avatarUrl}`}
+                width={45}
+                height={45}
+              ></Avatar>
+            </div>
+            <div className='title-content'>
+              <h4>{props.title}</h4>
+              <p className='text-small'>
+                {props.address}
+              </p>
+            </div>
+          </div>
           <div className='place-item__image'>
-            <img src={props.image} alt={props.title} />
+            <img
+              src={`http://localhost:5000/${props.image}`}
+              alt={props.title}
+            />
           </div>
           <div className='place-item__info'>
-            <h2>{props.title}</h2>
-            <h3>{props.address}</h3>
             <p>{props.description}</p>
           </div>
           <div className='place-item__actions'>

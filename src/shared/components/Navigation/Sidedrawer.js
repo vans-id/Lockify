@@ -9,7 +9,7 @@ const Sidedrawer = (props) => {
     <CSSTransition
       in={props.show}
       timeout={400}
-      classNames='slide-in-left'
+      classNames='slide-in-right'
       mountOnEnter
       unmountOnExit
     >

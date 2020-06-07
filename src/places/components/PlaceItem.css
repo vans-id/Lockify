@@ -6,6 +6,16 @@
   padding: 24px;
 }
 
+.place-item__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title-content {
+  margin-left: 16px;
+}
+
 .place-item__info {
   padding: 16px;
   text-align: center;
@@ -30,7 +40,6 @@
   width: 100%;
   height: auto;
   min-height: 200px;
-  border-radius: 11px;
 }
 
 .place-item__modal-actions {
@@ -40,7 +49,6 @@
 .place-item__actions {
   display: flex;
   justify-content: center;
-  margin: 16px 0;
 }
 
 .place-item__actions button,

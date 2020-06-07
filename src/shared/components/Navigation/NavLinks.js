@@ -14,7 +14,7 @@ const NavLinks = (props) => {
     <ul className='nav-links'>
       <li>
         <NavLink to='/' exact>
-          Users
+          Travelers
         </NavLink>
       </li>
       {isLoggedIn && (

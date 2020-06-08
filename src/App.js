@@ -1,40 +1,30 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch,
 } from 'react-router-dom';
+
+import { AuthContext } from './shared/context/auth-context';
+import { useAuth } from './shared/hooks/auth-hook';
+
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import UserPlaces from './places/pages/UserPlaces';
 import UpdatePlace from './places/pages/UpdatePlace';
 import Auth from './user/pages/Auth';
-import { AuthContext } from './shared/context/auth-context';
 
 function App() {
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState();
-  const [userName, setUserName] = useState();
-  const [userImage, setUserImage] = useState();
-
-  const login = useCallback(
-    (uid, username, imageUrl, token) => {
-      setToken(token);
-      setUserId(uid);
-      setUserName(username);
-      setUserImage(imageUrl);
-    },
-    []
-  );
-
-  const logout = useCallback(() => {
-    setToken(null);
-    setUserId(null);
-    setUserName(null);
-    setUserImage(null);
-  }, []);
+  const {
+    token,
+    userId,
+    userName,
+    userImage,
+    login,
+    logout,
+  } = useAuth();
 
   let routes;
   if (token) {

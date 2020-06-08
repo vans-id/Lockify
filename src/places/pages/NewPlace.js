@@ -32,7 +32,7 @@ const NewPlace = () => {
     sendRequest,
     clearError,
   } = useHttpClient();
-  const { userId } = useContext(AuthContext);
+  const { userId, token } = useContext(AuthContext);
   const history = useHistory();
 
   const placeSubmitHandler = async (e) => {
@@ -61,7 +61,8 @@ const NewPlace = () => {
       await sendRequest(
         'http://localhost:5000/api/places',
         'POST',
-        formData
+        formData,
+        { Authorization: `Bearer ${token}` }
       );
       // Redirect user to diffrent page
       history.push('/');

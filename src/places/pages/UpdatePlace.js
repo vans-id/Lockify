@@ -49,7 +49,7 @@ const UpdatePlace = () => {
     sendRequest,
   } = useHttpClient();
   const history = useHistory();
-  const { userId } = useContext(AuthContext);
+  const { userId, token } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPlace = async () => {
@@ -86,7 +86,10 @@ const UpdatePlace = () => {
           title: state.inputs.title.value,
           description: state.inputs.description.value,
         }),
-        { 'Content-Type': 'application/json' }
+        {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }
       );
       history.push(`/${userId}/places`);
     } catch (err) {}
@@ -144,6 +147,7 @@ const UpdatePlace = () => {
             type='submit'
             disabled={!state.isValid}
             size='large'
+            inverse
           >
             UPDATE
           </Button>

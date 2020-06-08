@@ -87,9 +87,10 @@ const Auth = () => {
         );
 
         login(
-          data.user.id,
-          data.user.name,
-          data.user.image
+          data.userId,
+          data.name,
+          data.image,
+          data.token
         );
       } catch (err) {}
     } else {
@@ -119,9 +120,10 @@ const Auth = () => {
         );
 
         login(
-          data.user.id,
-          data.user.name,
-          data.user.image
+          data.userId,
+          data.name,
+          data.image,
+          data.token
         );
       } catch (err) {}
     }

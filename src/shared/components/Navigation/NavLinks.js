@@ -61,9 +61,9 @@ const NavLinks = (props) => {
           alt='avatar'
           className='nav-avatar-image'
         />
-        <h3 className='nav-avatar-title'>
+        <h2 className='nav-avatar-title'>
           {userName || 'Guest'}
-        </h3>
+        </h2>
       </li>
     </ul>
   );

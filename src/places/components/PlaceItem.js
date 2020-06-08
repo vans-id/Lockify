@@ -23,14 +23,16 @@ const PlaceItem = (props) => {
     clearError,
     sendRequest,
   } = useHttpClient();
-  const { userId } = useContext(AuthContext);
+  const { userId, token } = useContext(AuthContext);
 
   const deleteHandler = async () => {
     setShowConfirm(false);
     try {
       await sendRequest(
         `http://localhost:5000/api/places/${props.id}`,
-        'DELETE'
+        'DELETE',
+        null,
+        { Authorization: `Bearer ${token}` }
       );
       props.onDelete(props.id);
     } catch (err) {}

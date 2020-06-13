@@ -9,7 +9,7 @@ const Map = (props) => {
   useEffect(() => {
     const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
     mapboxgl.accessToken =
-      'pk.eyJ1IjoiZGpldmFubiIsImEiOiJja2FxNXA0N3IwZGdzMnFvM21xcDI2MXd5In0.kt3x5njVTrlxvKe5ggWhEA';
+      process.env.REACT_APP_MAPBOX_API_KEY;
 
     const map = new mapboxgl.Map({
       container: mapRef.current,

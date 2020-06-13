@@ -32,7 +32,7 @@ const NewPlace = () => {
     sendRequest,
     clearError,
   } = useHttpClient();
-  const { userId, token } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
   const history = useHistory();
 
   const placeSubmitHandler = async (e) => {
@@ -52,14 +52,13 @@ const NewPlace = () => {
         'address',
         state.inputs.address.value
       );
-      formData.append('creator', userId);
       formData.append(
         'image',
         state.inputs.image.value
       );
 
       await sendRequest(
-        'http://localhost:5000/api/places',
+        `${process.env.REACT_APP_BACKEND_URL}/places`,
         'POST',
         formData,
         { Authorization: `Bearer ${token}` }

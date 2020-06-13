@@ -16,10 +16,9 @@ const NavLinks = (props) => {
     userImage,
   } = useContext(AuthContext);
 
-  let avatarUrl =
-    'https://secure.gravatar.com/avatar/50c30aae0f1878a17788458f7fefbcfe?s=252&d=mm&r=g';
+  let avatarImg = require('../../../assets/avatar.jpg');
   if (userImage) {
-    avatarUrl = `http://localhost:5000/${userImage}`;
+    avatarImg = `${process.env.REACT_APP_ASSET_URL}/${userImage}`;
   }
 
   return (
@@ -57,7 +56,7 @@ const NavLinks = (props) => {
       )}
       <li className='nav-avatar'>
         <Avatar
-          image={avatarUrl}
+          image={avatarImg}
           alt='avatar'
           className='nav-avatar-image'
         />

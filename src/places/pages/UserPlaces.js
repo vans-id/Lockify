@@ -22,7 +22,7 @@ const UserPlaces = () => {
     const fetchUserPlaces = async () => {
       try {
         const data = await sendRequest(
-          `http://localhost:5000/api/places/user/${userId}`
+          `${process.env.REACT_APP_BACKEND_URL}/user/${userId}`
         );
         setPlaces(data.places);
         setAvatarUrl(data.avatarUrl);

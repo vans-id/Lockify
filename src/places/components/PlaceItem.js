@@ -29,7 +29,7 @@ const PlaceItem = (props) => {
     setShowConfirm(false);
     try {
       await sendRequest(
-        `http://localhost:5000/api/places/${props.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/places/${props.id}`,
         'DELETE',
         null,
         { Authorization: `Bearer ${token}` }
@@ -93,7 +93,7 @@ const PlaceItem = (props) => {
           <div className='place-item__title'>
             <div>
               <Avatar
-                image={`http://localhost:5000/${props.avatarUrl}`}
+                image={`${process.env.REACT_APP_ASSET_URL}/${props.avatarUrl}`}
                 width={45}
                 height={45}
               ></Avatar>
@@ -107,7 +107,7 @@ const PlaceItem = (props) => {
           </div>
           <div className='place-item__image'>
             <img
-              src={`http://localhost:5000/${props.image}`}
+              src={`${process.env.REACT_APP_ASSET_URL}/${props.image}`}
               alt={props.title}
             />
           </div>

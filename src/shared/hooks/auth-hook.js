@@ -1,16 +1,46 @@
 import {
-  useState,
   useEffect,
   useCallback,
+  useReducer,
 } from 'react';
+
 let logoutTimer;
 
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      const tokenExp =
+        action.expirationDate ||
+        new Date(
+          new Date().getTime() + 1000 * 60 * 60
+        );
+
+      return {
+        token: action.token,
+        userId: action.uid,
+        userName: action.username,
+        userImage: action.imageUrl,
+        tokenExpDate: tokenExp,
+      };
+    case 'LOGOUT':
+      return {};
+
+    default:
+      return state;
+  }
+};
+
 export const useAuth = () => {
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState();
-  const [userName, setUserName] = useState();
-  const [userImage, setUserImage] = useState();
-  const [tokenExpDate, setTokenExpDate] = useState();
+  const [state, dispatch] = useReducer(
+    authReducer,
+    {},
+    () => {
+      const storedData = localStorage.getItem(
+        'userData'
+      );
+      return storedData ? JSON.parse(storedData) : {};
+    }
+  );
 
   const login = useCallback(
     (
@@ -20,40 +50,54 @@ export const useAuth = () => {
       token,
       expirationDate
     ) => {
-      setToken(token);
-      setUserId(uid);
-      setUserName(username);
-      setUserImage(imageUrl);
-
-      const tokenExp =
-        expirationDate ||
-        new Date(
-          new Date().getTime() + 1000 * 60 * 60
-        );
-      setTokenExpDate(tokenExp);
-
-      localStorage.setItem(
-        'userData',
-        JSON.stringify({
-          userId: uid,
-          token,
-          userName: username,
-          userImage: imageUrl,
-          expiration: tokenExp.toISOString(),
-        })
-      );
+      dispatch({
+        type: 'LOGIN',
+        uid,
+        username,
+        imageUrl,
+        token,
+        expirationDate,
+      });
     },
     []
   );
 
   const logout = useCallback(() => {
-    setToken(null);
-    setUserId(null);
-    setUserName(null);
-    setUserImage(null);
-    setTokenExpDate(null);
-    localStorage.removeItem('userData');
+    dispatch({
+      type: 'LOGOUT',
+    });
   }, []);
+
+  const {
+    token,
+    userId,
+    userName,
+    userImage,
+    tokenExpDate,
+  } = state;
+
+  useEffect(() => {
+    if (!token) {
+      localStorage.removeItem('userData');
+    } else {
+      localStorage.setItem(
+        'userData',
+        JSON.stringify({
+          userId,
+          token,
+          userName,
+          userImage,
+          expiration: tokenExpDate,
+        })
+      );
+    }
+  }, [
+    token,
+    userId,
+    userName,
+    userImage,
+    tokenExpDate,
+  ]);
 
   useEffect(() => {
     if (token && tokenExpDate) {

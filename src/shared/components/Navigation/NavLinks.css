@@ -35,8 +35,8 @@
 }
 
 .nav-avatar-image {
-  width: 100px;
-  height: 100px;
+  width: 100px !important;
+  height: 100px !important;
 }
 
 .nav-avatar-title {
@@ -51,8 +51,8 @@
   }
 
   .nav-avatar-image {
-    width: 45px;
-    height: 45px;
+    width: 45px !important;
+    height: 45px !important;
   }
 
   .nav-avatar-title {

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import GoogleLogin from 'react-google-login';
 
 import {
   VALIDATOR_EMAIL,
@@ -130,6 +131,27 @@ const Auth = () => {
     }
   };
 
+  const responseGoogle = async (response) => {
+    try {
+      const code = response['code'];
+      const data = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/google`,
+        'POST',
+        JSON.stringify({ code }),
+        {
+          'Content-Type': 'application/json',
+        }
+      );
+
+      login(
+        data.userId,
+        data.name,
+        data.image,
+        data.token
+      );
+    } catch (err) {}
+  };
+
   return (
     <>
       {isLoading && <LoadingSpinner asOverlay />}
@@ -192,6 +214,28 @@ const Auth = () => {
         >
           SWITCH TO {!isLogin ? 'LOGIN' : 'SIGN UP'}
         </Button>
+        <div className='center divider'>or</div>
+        <GoogleLogin
+          clientId={process.env.REACT_APP_CLIENT_ID}
+          render={(renderProps) => (
+            <Button
+              type='button'
+              size='large'
+              className='btn-google'
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+            >
+              <i className='fab fa-google'></i>
+              LOGIN WITH GOOGLE
+            </Button>
+          )}
+          responseType='code'
+          buttonText='Login'
+          redirectUri='postmessage'
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
       </form>
     </>
   );

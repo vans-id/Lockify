@@ -84,6 +84,14 @@
     -4px -4px 8px #ffffff;
 }
 
+.btn-google {
+  color: #de5246;
+}
+
+.btn-google .fa-google {
+  margin-right: 8px;
+}
+
 @media (min-width: 768px) {
   .button--large {
     display: inline-block;

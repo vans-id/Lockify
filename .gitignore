@@ -20,7 +20,10 @@ firebase.json
 .env.local
 .env.development.local
 .env.test.local
+.env.production
 .env.production.local
+
+catatan.txt
 
 npm-debug.log*
 yarn-debug.log*
